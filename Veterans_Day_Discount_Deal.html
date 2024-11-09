@@ -1,0 +1,2212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veterans Day Deals 2024</title>
+    <!-- Add Leaflet CSS and JS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .category {
+            margin-bottom: 30px;
+        }
+        .deal {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .deal h3 {
+            margin-bottom: 5px;
+            color: #3498db;
+        }
+	.store-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: #3498db;
+            text-decoration: none;
+            font-size: 0.9em;
+            background-color: #f8f9fa;
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+            transition: all 0.2s ease;
+        }
+        .store-link:hover {
+            background-color: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+        .store-link svg {
+            width: 16px;
+            height: 16px;
+        }
+        .deal p {
+            margin-top: 0;
+        }
+        .location-tag {
+            display: inline-block;
+            background-color: #e8f4f8;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.9em;
+            margin-right: 5px;
+            color: #2980b9;
+        }
+        #filters {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+        }
+        #filters select, #filters input {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            min-width: 150px;
+        }
+        #filters button {
+            padding: 8px 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #filters button:hover {
+            background-color: #2980b9;
+        }
+        .filter-group {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .hidden {
+            display: none;
+        }
+        .filter-label {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        #view-toggle {
+            margin-bottom: 20px;
+        }
+        #map {
+            height: 500px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .view-button {
+            padding: 8px 15px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #e8e8e8;
+        }
+        .view-button.active {
+            background-color: #3498db;
+            color: white;
+        }
+        .deals-container {
+            display: flex;
+            gap: 20px;
+        }
+        #deals-list {
+            flex: 1;
+        }
+        .map-container {
+            flex: 1;
+            display: none;
+        }
+        .map-container.visible {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Veterans Day Deals 2024</h1>
+    
+    <div id="filters">
+        <div class="filter-group">
+            <span class="filter-label">Category:</span>
+            <select id="category-filter">
+                <option value="all">All Categories</option>
+                <option value="restaurants">2024 Veterans Day discounts and complimentary meals</option>
+                <option value="retail">Retail discounts</option>
+                <option value="entertainment">Entertainment and recreation</option>
+                <option value="travel">Car care, oil changes, travel</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <span class="filter-label">Location:</span>
+            <select id="location-filter">
+                <option value="all">All Locations</option>
+                <option value="nationwide">Nationwide</option>
+		<option value="CA">California</option>
+		<option value="FL">Florida</option>
+		<option value="GA">Georgia</option>
+		<option value="MA">Massachusetts</option>
+		<option value="MO">Missouri</option>
+		<option value="NE">Nebraska</option>
+		<option value="NH">New Hampshire</option>
+		<option value="NY">New York</option>
+		<option value="OH">Ohio</option>
+		<option value="SC">South Carolina</option>
+		<option value="TN">Tennessee</option>
+		<option value="TX">Texas</option>
+		<option value="VA">Virginia</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <span class="filter-label">Search:</span>
+            <input type="text" id="search-filter" placeholder="Search deals...">
+        </div>
+        <button onclick="applyFilters()">Apply Filters</button>
+    </div>
+
+    <div id="view-toggle">
+        <button class="view-button active" onclick="toggleView('list')">List View</button>
+        <button class="view-button" onclick="toggleView('map')">Map View</button>
+    </div>
+
+    <div class="deals-container">
+        <div id="deals-list">
+
+            <div id="restaurants" class="category">
+                <h2>2024 Veterans Day discounts and complimentary meals</h2>
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        7-Eleven
+        <a href="https://corp.7-eleven.com/corp/archive/veterans-day" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty military members can get a free coffee or Big Gulp. Sign in or register with 7Rewards. Note, 7-Eleven stores are independently owned. Please inquire with your local store to see if they’re participating.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Another Broken Egg Café
+        <a href="https://www.anotherbrokenegg.com/locations/beavercreek-oh/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty service members can enjoy free patriot French toast combo and coffee on November 11 at participating locations. A valid ID is required. Dine-in only at participating cafes. </p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Applebee's
+        <a href="https://www.applebees.com/en/veterans-day-free-meals" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty military receive a free meal from a select menu on November 11 at participating locations. Dine-in only.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Aspen Creek Grill
+        <a href="https://aspencreekgrill.com/veterans/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 10-12 at 11:00 a.m. to 2:00 p.m., Aspen Creek is offering a $15 meal voucher to all Veterans and active duty military.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Biscuit Belly
+        <a href="https://www.military.com/discounts/biscuit-belly-veterans-day-military-discount" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans eat free on November 11 with choice of Bacon Egg & Cheese, Sausage Egg & Cheese, or Chicken Biscuit Sandwich and a hot drip coffee or fountain drink. All locations are participating, dine in only. Open from 7:30 a.m. to 2:00 p.m.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Black Angus
+        <a href="https://www.blackangus.com/heroes" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans, active duty, first responders, health care workers and teachers can receive 15% off their dine-in order.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        BJ's Restaurant & Brewhouse
+        <a href="https://www.bjsrestaurants.com/marketing-pages/veterans-day" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, come to BJ’s and enjoy a free Chocolate Chunk Pizookie with no minimum food purchase. In following, receive a bonus reward coupon to use 11/12/2024 – 12/31/2024 for dine-in or take-out only for a free appetizer with no minimum food purchase.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Bob Evans
+        <a href="https://www.bobevans.com/veterans-day" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, Bob Evans will be offering a special menu of seven homestyle favorites available to Veterans and active duty military free at their local Bob Evans Restaurant.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Bonefish Grill
+        <a href="https://www.military.com/discounts/bonefish-grill-veterans-day-military-discount" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Active duty service members and Veterans get a complimentary order of Bang Bang Shrimp with a soft beverage on November 11 with valid ID.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Bruegger's Bagels
+        <a href="https://www.military.com/discounts/brueggers-bagels-veterans-day-military-discount" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty military get a free hot or iced coffee (any size) with a purchase in-store on November 11.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Bubba Gump Shrimp
+        <a href="https://www.bubbagump.com/event/veterans-day/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, Bubba Gump is honoring Veterans and active duty member by offering 20% off their meal when they dine-in.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Buffalo Wild Wings
+        <a href="https://www.military.com/discounts/buffalo-wild-wings-veterans-day-military-discount" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty service members get a free order of 10 boneless wings and fries on November 11 with valid ID. Only available for dine-in. Buffalo Wild Wings GO locations will be included for walk-in/order at the counter only. </p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        California Dreaming
+        <a href="https://californiadreaming.rest/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, Veterans and active duty members can receive 50% off on any entrée. Select locations are participating. Inquire with your local restaurant.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        California Pizza Kitchen
+        <a href="https://www.military.com/discounts/california-pizza-kitchen-veterans-day-military-discount" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty military members get a complimentary meal from a select menu on November 11. All active duty service members and Veterans will receive a BOGO coupon to use for any pizza, pasta or salad redeemable between November 12 to 25. Please note, CPK is independently owned. Call your local restaurant for participation details.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Caribou Coffee
+        <a href="https://www.cariboucoffee.com/2023/11/caribou-coffee-celebrates-the-start-of-the-holiday-season-with-savings-galore-for-all-guests/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans, active duty military members and their spouses with a valid ID receive a Small Hot Brewed Coffee of the Day or Cold Press, excluding nitro on November 11.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Carolina Ale House
+        <a href="https://www.carolinaalehouse.com/promotions/veterans-day-2024/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and military members receive a free half rack rib platter with coleslaw and fries on Veterans Day. Only select locations are participating, inquire with your local restaurant.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Carrabba's
+        <a href="https://www.carrabbas.com/offers/heroes-discount" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Carrabba’s is offering a Heroes Discount of 10% discount with any visit to active duty members, Veterans, and first responders. Restrictions and requirements apply.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Casey's Convenience Store
+        <a href="https://www.caseys.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, Casey’s is showing appreciation to Veterans and active duty service members by offering a free, any size coffee or fountain drink.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Chick-Fil-A
+        <a href="https://cfametrodc.com/veteransday2/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, Veterans and active duty members can receive a breakfast chicken biscuit or lunch/dinner original chicken sandwich (select items). Proof of service required. Offer only valid at the following participating Metro D.C. Chick-fil-A Restaurants. Inquire with your local store to check if they are participating.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Chicken Salad Chick
+        <a href="https://www.chickensaladchick.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, Veterans and active duty military (who come in uniform or present valid ID) can receive a free meal at all locations.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Cici's Pizza
+        <a href="https://www.cicis.com/deals" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty members receive a free adult buffet on Veterans Day. With a valid military ID, both active duty and retired service members are welcome.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Chili's
+        <a href="https://www.chilis.com/restaurant-events/veterans-day" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty military members get a free meal on November 11 at all participating restaurants. Available in-restaurant only for select items. Military ID required to redeem offer.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Cracker Barrel
+        <a href="https://www.crackerbarrel.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, Veterans can enjoy a free slice of double fudge Coca-Cola cake with their meal. Special promotions run all month.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Denny's
+        <a href="https://www.military.com/discounts/dennys-veterans-day-military-discount" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty military personnel receive a free Original Grand Slam on November 11 from 5 a.m. to 12 p.m. Must show valid Military ID or DD214. </p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Farmer Boys
+        <a href="https://www.military.com/discounts/farmer-boys-veterans-day-military-discount" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, Veterans and active duty military personnel get a free Big Cheeseburger at participating locations. The offer is valid for dine-in only with proof of service and is limited to one per service member.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Duffy's Sport Grill
+        <a href="https://dejavu.duffysmvp.com/veterans-day-2024" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, Veterans and active duty members can receive a free meal up to $15 meal value between 11 a.m. to 4 p.m., dine-in only. Valid Military or Veteran ID required, with 40% off meals year around.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Dunkin'
+        <a href="https://news.dunkindonuts.com/blog/veterans-day-free-donut-2023" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty members, get a free donut of choice on November 11 at participating locations. Offer available in-store only.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Einstein Bro. Bagels
+        <a href="https://www.military.com/discounts/einstein-bros-bagels-veterans-day-military-discount" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty military get a free hot or iced coffee (any size) with a purchase in-store on November 11.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Eureka!
+        <a href="https://eurekarestaurantgroup.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty members can receive any free burger on Veterans Day!</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Freddy's
+        <a href="https://www.freddys.com/veterans-day" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty military personnel who visit participating locations on November 11 will receive a meal card valid for a free combo meal of their choice. Cards may be redeemed through Dec. 31, 2024.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Gold Star Chili
+        <a href="https://www.goldstarchili.com/veterans-day" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, Veterans and active duty military get a complimentary meal of their choice (up to $12 off their order with proof of service). For dine-in, carry out or drive-thru.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Golden Corral
+        <a href="https://www.military.com/discounts/golden-corral-veterans-day-military-discount" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11 at 5:00 p.m. to close, Golden Corral is hosting its Military Appreciation Night, including a free “thank you” meal.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        The Greene Turtle
+        <a href="https://thegreeneturtle.com/promo/military-discount/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans receive a free meal up to $15 with valid ID on November 11. Dine-in only.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Hacienda Mexican Restaurants
+        <a href="https://www.haciendafiesta.com/promos-events" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> All U.S Veterans and active duty military may receive a free large Wet Burrito when they dine-in or carryout on November 11 for Veterans Day. Military ID or Veterans ID required. </p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Hard Rock Café
+        <a href="https://cafe.hardrock.com/atlantic-city/files/5303/24-HRC-05596_-_Veterans_Day_2024_11x14.pdf" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> A free burger for active duty military and Veterans is available on Nov. 11, in addition to a 15% military discount for the entire group. Valid military ID or Veteran ID required. </p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Hopdoddy Burger Bar
+        <a href="https://www.hopdoddy.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> November 11, active duty members and Veterans can receive a free classic burger in honor of their service. Dine-in only.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Hoss's Steak & Sea house
+        <a href="https://hosss.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty military will receive free soup, salad, bread, nacho and dessert bar, and iced tea on Monday, November 11. Dine-in only.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        In-N-Out Burger
+        <a href="https://www.in-n-out.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, Veterans, active duty military, Reserve and National Guard receive a complimentary meal, including any burger, fries and beverage on In-N-Out Burger’s menu. Present proof of military service.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        iHop
+        <a href="https://www.ihop.com/en/veterans-day" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Free red, white and blueberry pancakes for Veterans and active duty military at participating locations. A valid military ID or proof of service is required, dine-in only. Limit one per guest.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Keel's Farms
+        <a href="https://www.prweb.com/releases/a-salute-to-service-men-and-women-keel-farms-offers-free-meals-on-veterans-day-301973255.html" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty service members can select any entree from a specially prepared menu featuring delicious dishes. Pair any of these mouth-watering entrées with an adult beverage on the house.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Kolache Factory
+        <a href="https://kolachefactory.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty military receive one free kolache (any kind) and one cup of freshly brewed Katz coffee (any size) on November 11, 6 a.m. to 2 p.m. with valid ID. Offer excludes croissants, Polish varieties and espresso drinks. </p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Krispy Kreme
+        <a href="https://www.krispykreme.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Free coffee and doughnut available at all locations to honor Veterans and active duty military.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Lazy Dog Restaurants
+        <a href="https://www.lazydogrestaurants.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans, whether active duty, discharged, retired or Reserve, will receive a free entrée on Veterans Day. The restaurant also is extending its weekend brunch hours for the holiday.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Little Caesars Pizza
+        <a href="https://littlecaesars.com/en-us/?gclid=39488ad4e1e413a8a4f4edf6b46171d5&gclsrc=3p.ds&msclkid=39488ad4e1e413a8a4f4edf6b46171d5&utm_source=bing&utm_medium=cpc&utm_campaign=BNG_Brand_Core_EXT&utm_term=Little%20Caesars&utm_content=BNG_Brand_Core_EXT" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On Veterans Day from 11 a.m. to 2 p.m., Veterans and active duty military can receive a free lunch combo. Proof of service is required. Participating locations only, inquire with your local store.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Logan's Roadhouse
+        <a href="https://www.restaurantnews.com/logans-roadhouse-honors-military-heroes-with-free-meal-and-support-for-k9s-for-warriors-this-veterans-day-103024/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, Veterans and active duty service members can enjoy a complimentary meal at participating Logan’s locations, choosing from a special menu of fan favorites like cheeseburgers, chicken tenders, pork chops and more.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Max & Erma's
+        <a href="https://www.maxandermas.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, Max & Erma’s locations will offer Veterans and active duty military a free cheeseburger, endless fries, a fountain drink and a cookie.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        McCormick & Schmick's
+        <a href="https://www.mccormickandschmicks.com/event/veterans-we-salute-you-2022/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 10, active duty service members, Veterans, Gold Star spouses and Gold Star parents can receive a half-priced entrée from a special at participating restaurants. The offer is for dine-in only. Inquire about participation at your local restaurant.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        The Melting Pot
+        <a href="https://www.meltingpot.com/littleton-co/melting-pot-events.aspx" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, the Melting Pot will offer Veterans a complimentary four-course meal with the purchase of another four-course meal. To receive the offer, Veterans must show military ID and the offer is limited to one complimentary meal per additional regular priced meal. The offer is not combinable with other promotions, specials or certificates. [Editor: This is the wording we received from The Melting Pot. Presumably, the restaurant means active duty service members with a military ID—and Veterans with a Veteran ID, since non-retired Veterans won’t have a military ID. Please check with your local restaurant to confirm prior to making plans.]</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        MOD Pizza
+        <a href="https://modpizza.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, all Veterans and active military personnel and their spouses get the all new Mega Cookie for free.</p>
+</div>
+    
+<div class="deal" data-location="GA" data-lat="33.7" data-lng="-84.44">
+    <h3>
+        New York Prime
+        <a href="https://newyorkprime.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Atlanta, GA</span> On November 11, Veterans and active duty military get 50% off any entrée at select restaurants in Atlanta, Florida and South Carolina. Inquire with your local restaurant about participation.</p>
+</div>
+    
+<div class="deal" data-location="FL" data-lat="27.8" data-lng="-81.5">
+    <h3>
+        New York Prime
+        <a href="https://newyorkprime.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Florida</span> On November 11, Veterans and active duty military get 50% off any entrée at select restaurants in Atlanta, Florida and South Carolina. Inquire with your local restaurant about participation.</p>
+</div>
+    
+<div class="deal" data-location="SC" data-lat="33.8" data-lng="-80.7">
+    <h3>
+        New York Prime
+        <a href="https://newyorkprime.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">South Carolina</span> On November 11, Veterans and active duty military get 50% off any entrée at select restaurants in Atlanta, Florida and South Carolina. Inquire with your local restaurant about participation.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Outback Steakhouse
+        <a href="https://www.outback.com/offers/military-mates" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Free Bloomin’ Onion and Coca-Cola for Veterans and active duty military. Dine-in and to-go orders valid.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        On the Border
+        <a href="https://www.ontheborder.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and current service members will receive a free Pick-2 Combo Meal. Dine-in only. Proof of service is required. Participating locations only.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Olive Garden
+        <a href="https://www.olivegarden.com/home" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, Olive Garden is having a Veterans Day free meal for all active duty military and Veterans, including entrée from special menu paired with breadsticks and salad or soup.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Peet's Coffee
+        <a href="https://www.peets.com/collections/all-coffees" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans get one free drip coffee or tea of any size on November 11. Valid only at participating Peet’s retail coffee bar locations.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Perkins
+        <a href="https://www.perkinsrestaurants.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, Veterans and active duty members will receive a free Magnificent Seven Breakfast for Veterans Day.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Perry's Steakhouse
+        <a href="https://perryssteakhouse.com/specials/military-menu/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active military enjoy a complimentary pork chop dinner for dine-in when accompanied by a guest purchasing a dinner entrée. Dine-in only.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Polly's Pies
+        <a href="https://www.pollyspies.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty service members can receive a free slice of pie on November 10-11. Military ID required, in-store only.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Red Lobster
+        <a href="https://www.redlobster.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, Veterans, active duty service members and Reservists can get a free shrimp and chips paired with french fries and coleslaw. Valid Military ID required. Offer is for dine-in only.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Red Robin
+        <a href="https://www.redrobin.com/veterans-day" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, Red Robin is honoring Veterans and active duty service members by offering a free Red’s Big Tavern Burger served with bottomless fries. Dine-in only.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Rock & Brews
+        <a href="https://sunsetwalk.com/offers/veterans-day-special-rock-and-brews/#:~:text=This%20Veterans%20Day%2C%20Rock%20%26%20Brews%20is%20serving,ID%20at%20participating%20locations.%20Monday%2C%20November%2011%2C%202024" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Active duty military and Veterans get complimentary Pulled Pork Sandwich or Strawberry Fields Salads on November 11. Dine-in only.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Shoney's
+        <a href="https://www.shoneys.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty service members will receive a free All-You-Care-To-Eat breakfast bar until 11:00 a.m. on November 11.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Sizzler
+        <a href="https://sizzler.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, Sizzler is honoring Veterans and active duty service members with a free meal choice of a Half Dozen Crispy Shrimp, Malibu Chicken, or 6 oz Tri-Tip Steak entrée. Participating locations only; inquire with your local restaurant. Deal ends at 4:00 p.m.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Starbucks
+        <a href="https://www.military.com/discounts/starbucks-veterans-day-military-discount" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Starbucks is showing its appreciation to Veterans, active duty service members and spouses by offering a free 12 oz drip coffee (hot or cold).</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Sonic Drive-In
+        <a href="https://www.sonicdrivein.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, Veterans and active duty service members can sip on half price shakes in any size and flavor, including both classic and master shakes.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Subway
+        <a href="https://www.subway.com/en-us?utm_source=bing&utm_medium=cpc&utm_term=subway_exact&utm_content=brand&utm_campaign=&cid=0:0:00:0:nat-us:0&segment_code=0&gclid=fcb7380048dd1c784cc35f221ab7562f&gclsrc=3p.ds&msclkid=fcb7380048dd1c784cc35f221ab7562f" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty service members can receive a free 6-inch sub or 10% discounted sub sandwich. Subway is independently owned. Inquire through your local store to see if participating in deals.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Texas Roadhouse
+        <a href="https://texasroadhousemenuwithprices.com/texas-roadhouse-military-discount/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> At participating locations, active duty military and Veterans can dine in or receive a free meal voucher on November 11 from 11:00 a.m. to 2:00 p.m. with a form of military ID. These vouchers do not expire until May 2025.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Ted's Montana Grill
+        <a href="https://www.tedsmontanagrill.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty service members can receive 10% on meals during Veterans Day.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        TGIFridays Restaurant & Cocktail Bar
+        <a href="https://tgifridays.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty military personnel get a free meal on November 11 from 11:00 a.m. to 3:00 p.m. from a select menu.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        TravelCenters of America
+        <a href="https://www.ta-petro.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, active duty military, Veterans and Reservists can receive a complimentary meal at participating quick service and full-service restaurants nationwide.</p>
+</div>
+    
+<div class="deal" data-location="MA" data-lat="42.1" data-lng="-71.6">
+    <h3>
+        Tuscan Kitchen
+        <a href="https://www.tuscanbrands.com/veterans-eat-free/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Massachusetts</span> On Veterans Day, all Veterans can receive complimentary dining at any of the Massachusetts and New Hampshire locations.</p>
+</div>
+    
+<div class="deal" data-location="NH" data-lat="44.07" data-lng="-71.62">
+    <h3>
+        Tuscan Kitchen
+        <a href="https://www.tuscanbrands.com/veterans-eat-free/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">New Hampshire</span> On Veterans Day, all Veterans can receive complimentary dining at any of the Massachusetts and New Hampshire locations.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        White Castle
+        <a href="https://www.military.com/discounts/white-castle-veterans-day-military-discount" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, White Castle is celebrating Veterans and active duty service members by offering a free meal combo. Dine-in only.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Wendy's
+        <a href="https://www.wendys.com/wesalute" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, Veterans and active duty service members can receive a free small breakfast combo.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Yard House
+        <a href="https://www.yardhouse.com/events/veterans-day-deals" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty service members will receive a complimentary appetizer on Veterans Day. Check with server for further details on selected items.</p>
+</div>
+            </div>
+
+            <div id="retail" class="category">
+                <h2>Retail discounts</h2>
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        316Tees
+        <a href="https://www.316tees.com/pages/veterans" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> 316Tees is a Veteran-owned business, and it extends a special 10% discount to all United States Armed Forces Veterans. This offer is available year-round with proof of service.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Academy Sports + Outdoors
+        <a href="https://www.academy.com/military-and-first-responders" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Active duty service members, Veterans and first responders get 10% off the entire purchase online or in-store from now to November 11.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Amazon
+        <a href="https://www.amazon.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty service members can receive 20% off or more on select items now up until Veterans Day.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Ashley Furniture
+        <a href="https://www.ashleyfurniture.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty service members can receive 10% off any purchase at participating stores.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Brides Across America
+        <a href="https://www.bridesacrossamerica.com/events/registration/register" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Brides Across America collaborates with bridal salons nationwide to host its wedding gown giveaways biannually. Qualifying brides register to attend the event at a participating bridal salon by completing the registration form. Visit website for further details.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        DEVIL-DOG Dungarees
+        <a href="https://devil-dog.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> From now up through November 11, active duty service members, Veterans, military spouses, and family members get 50% off the entire website.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Food Lion
+        <a href="https://foodlion.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, Veterans and active duty service members save 10% on their in-store shopping purchase total before taxes. This offer excludes alcohol (beer and wine), tobacco, gift cards, lottery, pharmacy, postage stamps and services. Must show military ID and use MVP Card at checkout.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        IKEA
+        <a href="https://www.ikea.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 10-22, Veterans and active duty service members with a valid ID can receive 15% on in-store home furnishing items, up to $3,000 pre-tax.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Kohl's
+        <a href="https://www.kohls.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Active duty service members and Veterans, and their families receive 30% off qualifying in-store purchases Veterans Day weekend. Valid military ID is required.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Macy's Veterans Day Sale
+        <a href="https://www.macys.com/shop/sale/veterans-day-sale/Brand/Macy%27s?id=204372" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans Day deals on select items in-store and online.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Office Depot and OfficeMax
+        <a href="https://www.military.com/discounts/office-depot-officemax-veterans-day-military-discount" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans, active duty and retired military personnel, Reservists and their dependents receive 25% off qualifying regular and sale-priced purchases in stores nationwide November 11 to 13. Shoppers must present a valid military ID, military dependent ID, or form of Veteran ID at the time of purchase.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Publix
+        <a href="https://www.publix.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Offering 10% off purchase items.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Rack Room Shoes
+        <a href="https://www.rackroomshoes.com/military-discount?cjdata=MXxOfDB8WXww&utm_medium=Affiliate&cjevent=59ce9d3b963111ef807cc9e40a82b836&utm_campaign=20210127_rrs_January_Digital" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans, active duty service members and dependents can receive 20% off entire purchase with valid Military ID, in-store only.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Reebok
+        <a href="https://www.reebok.com/content/discount-programs" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Reebok is offering a 40% off discounted price to Veterans, active duty service members, first responders, health care workers and more. Verify with ID.Me to claim discount.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Rite Aid
+        <a href="https://www.businesswire.com/news/home/20231102834129/en/Rite-Aid-to-Honor-Military-Service-Members-with-Veteran-Appreciation-Discount" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> From November 10 to 12, customers with a valid military ID or proof of service are eligible for 15% off regular-priced items at any location. Customers must be members of the Rite Aid Rewards program. In-store purchases only.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Samsung
+        <a href="https://www.samsung.com/us/shop/offer-program/military/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans, active duty service members and their families can save up to 30% off.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Sleep Number
+        <a href="https://www.sleepnumber.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Offering Veterans and active duty service members 20% off most Sleep Number beds, all bases and most bedding purchases. Offer is valid until November 13.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Sperry
+        <a href="https://shop.id.me/stores/10115-sperry-us" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Sperry offers a 20% discount to Veterans and active duty service members with valid proof of service. Verify through ID.me.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Sport Clips
+        <a href="https://www.sportclips.com/promotions-partnerships/help-a-hero/help-a-hero" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, participating locations will provide free haircuts to Veterans and active duty service members with valid proof of service.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Talk4Troops
+        <a href="https://www.talk4troops.com/pages/how-it-works" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Talk4Troops, a retailer of discounted tech devices, offers military personnel, Veterans, retirees, their dependents and first responders a 10% discount. The company donates part of its earnings to support Veteran and first responder charities. The offer is ongoing and is confirmed with a GovX ID.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Target
+        <a href="https://www.military.com/discounts/target-veterans-day-military-discount" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Target is offering a 10% military discount from October 29 through November 11 to all active duty military personnel, Veterans and their families. The discount can be used on two separate transactions and applies to all in-basket items, online and in-store.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Thorlo Socks
+        <a href="https://thorlo.com/pages/govx-id-military-discount" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veteran’s Day Sale! Receive 15% off military and therapeutic socks.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Tractor Supply Company
+        <a href="https://www.businesswire.com/news/home/20241022763673/en/Tractor-Supply-Honors-Military-Veterans-and-First-Responders-With-Hometown-Heroes-Days-Celebration-October-26-%E2%80%93-November-11" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, active duty service members and Veterans receive a 10% discount. Must complete Hometown Hero verification process through Neighbor’s Club to receive discount.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Tuft & Needle
+        <a href="https://www.tuftandneedle.com/pages/military-healthcare-discount?srsltid=AfmBOopsBwtkthvtn3xICaQJQtdJsDj1XXFEr_TGiAfNs_AXcpWYEjMV" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Active duty service members and Veterans can get 15% off their whole order. </p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Ugg
+        <a href="https://www.ugg.com/promos-coupons-discounts/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> For Veteran’s Day, military personnel are entitled to a 10% discount on every purchase, even on sale items.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Under Armour
+        <a href="https://about.underarmour.com/en-us/stories/2023/11/under-armour-doubles-military-and-first-responders-discount-ahea.html#:~:text=Military%20and%20first%20responders%20receive%2020%25%20off%20year-round,codes%2C%20sitewide%20promotions%20or%20any%20gift%20card%20purchases." class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans, active duty service members, military spouses, families, and first responders can receive 40% off, plus discounts from 20% to 40% at all UA Brand Houses and online, and from 10% to 20% at all UA Factory Houses. In following, up to 20% discounts to Veterans and active duty service members all year round.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        The Vitamin Shoppe
+        <a href="https://www.vitaminshoppe.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty military receive 25% off purchases in-store at The Vitamin Shoppe and Super Supplements from November 11 to 13.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Vera Bradley
+        <a href="https://verabradley.com/pages/appreciation-discount#:~:text=Am%20I%20eligible?,automatically%20be%20applied%20at%20checkout." class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Vera Bradley is offering a 10% online discount to members of the U.S. military who can sign in with ID.me to verify their status. Exclusions apply (source).</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Walgreens
+        <a href="https://www.walgreensbootsalliance.com/news-media/press-releases/2024/walgreens-honors-veterans-active-duty-military-and-families-veterans#:~:text=Beginning%20Friday%2C%20Nov.%208%20through%20Monday%2C%20Nov.%2011%2C,at%20any%20Walgreens%20or%20Duane%20Reade%20drugstore%20nationwide." class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> From November 8 to 11, Veterans, military and their families will receive 20% off regular price eligible store items at any Walgreens or Duane Reade drugstore nationwide.</p>
+</div>
+            </div>
+
+            <div id="entertainment" class="category">
+                <h2>Entertainment and recreation</h2>
+<div class="deal" data-location="NY" data-lat="40.72" data-lng="-74">
+    <h3>
+        9/11 Memorial & Museum (New York City)
+        <a href="https://www.911memorial.org/connect/communities/servicemembers-and-veterans/salute-service" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">New York City, NY</span> From Nov. 7 to 11, Veterans and active duty service members, and Blue and Goldstar Families will receive free museum admission.</p>
+</div>
+    
+<div class="deal" data-location="OH" data-lat="40.56" data-lng="-82.7">
+    <h3>
+        Akron Zoo (Ohio)
+        <a href="https://www.akronzoo.org/veterans-appreciation-days-1" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Ohio</span> All Veterans and active duty service members receive free admission with valid military ID, and immediate family members receive 50% off admission Nov. 11, 11 a.m. to 4 p.m. To receive Veterans Appreciation Days discount, come to the ticket counter to purchase tickets.</p>
+</div>
+    
+<div class="deal" data-location="CA" data-lat="33.76" data-lng="-118.2">
+    <h3>
+        Aquarium of the Pacific (Long Beach, California)
+        <a href="http://www.aquariumofpacific.org/events/info/veterans_day/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Long Beach, CA</span> Veterans and active duty military personnel who show valid service ID will receive free admission November 11. Advance reservation is required.</p>
+</div>
+    
+<div class="deal" data-location="VA" data-lat="37.3" data-lng="-76.7">
+    <h3>
+        Colonial Williamsburg
+        <a href="https://www.colonialwilliamsburg.org/explore/special-event/veterans-day-weekend/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Williamsburg, VA</span> All active duty service members, Reservists, National Guard members, Veterans, and military retirees and their dependents receive free admission November 8-11.</p>
+</div>
+    
+<div class="deal" data-location="TN" data-lat="36.2" data-lng="-86.8">
+    <h3>
+        Country Music Hall of Fame and Museum
+        <a href="https://www.countrymusichalloffame.org/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nashville, TN</span> Veterans and active duty service members receive free admission, including up to three immediate family members.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Dave & Buster's
+        <a href="https://www.military.com/discounts/dave-busters-veterans-day-military-discount" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans get a free entree (up to $20) and a free $10 Power Card with a valid Veterans ID card on November 11.</p>
+</div>
+    
+<div class="deal" data-location="CA" data-lat="33.88" data-lng="-118">
+    <h3>
+        Knott's Berry Farm
+        <a href="https://www.knotts.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Buena Park, CA</span> Discounted admission during Military Tribute Days, also available for up to five accompanying guests.</p>
+</div>
+    
+<div class="deal" data-location="CA" data-lat="37.68" data-lng="-118.96">
+    <h3>
+        Mammoth Mountain
+        <a href="https://www.mammothmountain.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Mammoth Lakes, CA</span> Veterans and active duty service members receive a free lift ticket.</p>
+</div>
+    
+<div class="deal" data-location="VA" data-lat="38.05" data-lng="-78.5">
+    <h3>
+        Monticello
+        <a href="https://www.monticello.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Charlottesville, VA</span> Free admission offered to Veterans and active duty service members.</p>
+</div>
+    
+<div class="deal" data-location="VA" data-lat="38.715" data-lng="-77.085">
+    <h3>
+        Mount Vernon
+        <a href="https://www.mountvernon.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Mount Vernon, VA</span> Free admission offered to Veterans and active duty service members.</p>
+</div>
+    
+<div class="deal" data-location="VA" data-lat="38.715" data-lng="-77.095">
+    <h3>
+        Mount Vernon (Mount Vernon, Va.)
+        <a href="https://www.mountvernon.org/plan-your-visit/calendar/events/mount-vernon-salutes-veterans/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Mount Vernon, VA</span> All active duty, former, or retired military personnel receive free admission Nov. 11.</p>
+</div>
+    
+<div class="deal" data-location="MO" data-lat="39.13" data-lng="-94.6">
+    <h3>
+        National World War I Museum and Memorial (Kansas City, Mo.)
+        <a href="https://www.theworldwar.org/veteransday" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Kansas City, MO</span> Veterans and active duty military personnel receive free admission Nov. 8-11. The public receives half-price admission.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        National Parks
+        <a href="https://www.nps.gov/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans and active duty service members have free admission to all National Park sites.</p>
+</div>
+    
+<div class="deal" data-location="GA" data-lat="32.1" data-lng="-81.1">
+    <h3>
+        Old Town Trolley Tours - Savannah
+        <a href="https://www.trolleytours.com/savannah/coupons-promotions" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Savannah, GA</span> For Veterans Day, Old Town Trolley Tours is offering a special discount for military service members. Current and past members can enjoy a buy one, get one free admission for a sightseeing tour across major U.S. cities. Just remember to bring along a military ID or Form DD214 to claim the offer.</p>
+</div>
+    
+<div class="deal" data-location="FL" data-lat="29.9" data-lng="-81.32">
+    <h3>
+        Old Town Trolley Tours - St. Augustine
+        <a href="https://www.trolleytours.com/st-augustine/coupons-promotions" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">St. Augustine, FL</span> For Veterans Day, Old Town Trolley Tours offers free admission to its tours and attractions, including the Old Jail, Oldest Store Museum Experience, and St. Augustine History Museum. This offer encompasses seven major U.S. cities, such as Boston, Key West, and Washington, D.C. This discount allows Veterans to explore each city’s unique character at no cost.</p>
+</div>
+    
+<div class="deal" data-location="OH" data-lat="40.8" data-lng="-81.39">
+    <h3>
+        Pro Football Hall of Fame
+        <a href="https://www.profootballhof.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Canton, OH</span> Veterans and active duty service members get free admission and parking + 20% off gift shop purchases on November 11.</p>
+</div>
+    
+<div class="deal" data-location="TX" data-lat="29.45" data-lng="-98.5">
+    <h3>
+        San Antonio Zoo
+        <a href="https://sazoo.org/zoo-events/zoo-salutes/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">San Antonio, TX</span> Free admission to San Antonio Zoo for all military members and Veterans.</p>
+</div>
+    
+<div class="deal" data-location="CA" data-lat="38.1" data-lng="-122.27">
+    <h3>
+        Six Flags Discovery Kingdom
+        <a href="https://www.sixflags.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Vallejo, CA</span> Free admission to Veterans and active duty service members, and accompanying family members can receive a discount rate.</p>
+</div>
+    
+<div class="deal" data-location="NE" data-lat="41.7" data-lng="-100">
+    <h3>
+        Strategic Air Command & Aerospace Museum
+        <a href="https://www.sacmuseum.org/visit/visitor-information/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nebraska</span> Strategic Air Command & Aerospace Museum is offering free admission and a program for Veterans and active or retired military personnel from 11 a.m. to 2 p.m. on Veterans Day. In addition, it provides a $4 discount on general admission year-round with a valid military ID. Boost learning about aviation and space tech with these savings.</p>
+</div>
+    
+<div class="deal" data-location="CA" data-lat="37.35" data-lng="-121.89">
+    <h3>
+        Winchester Mystery House
+        <a href="https://www.winchestermysteryhouse.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">San Jose, CA</span> 30% off admission, also applicable to family members.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Zoos
+        <a href="https://www.zoos.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Zoos is offering free or discounted admission tickets on Veterans Day. Inquire locally.</p>
+</div>
+            </div>
+
+            <div id="travel" class="category">
+                <h2>Car care, oil changes, travel</h2>
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        4Patriots
+        <a href="https://shop.4patriots.com/pages/veterans-day-event" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> 4Patriots is offering Veterans and active duty military its best-selling $29 72-Hour Survival Food Kit for free on November 11. To receive the free food kit, Veterans and service members must register on the 4Patriots Veterans Day Celebration Event page on November 11 only.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        AARP
+        <a href="https://www.aarp.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Special membership offers available through AARP.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        B&Bs for Vets
+        <a href="https://bandbsforvets.org/about/#:~:text=The%20B%26Bs%20for%20Vets%20program%20has%20been%20running,for%20one%20night%20on%20or%20around%20Veteran%E2%80%99s%20Day." class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> The B&Bs for Vets program across the United States and Canada have offered active duty service members and Veterans free lodging for one night on or around Veteran’s Day. Please refer to website for more details on offerings.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Delta Sonic
+        <a href="https://deltasoniccarwash.com/veterans-day-2024/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Delta Sonic is proud to give back to Veterans and active military. All November, Veterans and active duty service members save $30 on any oil change. Military ID required.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Garber Dealerships
+        <a href="https://www.mlive.com/news/saginaw-bay-city/2024/10/garber-dealerships-to-offer-free-oil-changes-for-veterans-active-duty-military.html#:~:text=In%20a%20news%20release%2C%20Garber%20Management%20Group%20officials,two%20days%20before%20Veterans%20Day%2C%20Monday%2C%20Nov.%2011." class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Local Veterans and active duty service members can receive free oil changes on November 9.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Goodyear Auto Service
+        <a href="https://www.goodyear.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Offering free tire, brake, battery and fluid checks, plus 10% off tires. Appointment required.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Grace for Vets
+        <a href="https://www.graceforvets.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, Grace for Vets is offering free car washes to all Veterans and active duty personnel.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Great Clips
+        <a href="https://www.greatclips.com/about-us/giving/thank-a-veteran" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> November 11, Veterans and active duty service members can receive a free haircut or free haircut card for future visit.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        NY Waterway
+        <a href="https://www.nywaterway.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Offering free ferry service on all routes for all active duty military and Veterans with valid Veteran or Military ID.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Oil Changes
+        <a href="https://www.oilchangers.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Free oil changes at varying locations, inquire about free services and/or discounted rates locally.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Russell Speeder's Car Wash
+        <a href="https://russellspeeders.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> November 9-11, Russel Speeder’s is offering free car washes to Veterans and active duty service members.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        R. Riveter
+        <a href="https://www.rriveter.com/pages/military-and-service-family-discount?_pos=1&_sid=f5d007ce8&_ss=r" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Active duty military, Veterans, Reserve/National Guard members and dependents. Sign into VerifyPass to access discount.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Red Roof
+        <a href="https://www.redroof.com/?utm_source=google&utm_medium=cpc&utm_term=red%20roof%20inn&utm_campaign=G_Brand_Red_Roof_Inn_Exact&utm_content=Exact_Match&utm_source=google&utm_medium=cpc&utm_term=red%20roof%20inn&utm_campaign=RRI%7CBrand%7CRed-Roof-All%7CCore%7CStandard%7CGG%7CAll%7CExact%7CUSA%7CENG&utm_content=e&ds_rl=temp&gad_source=1&gclid=Cj0KCQjw99e4BhDiARIsAISE7P9JHeQhZ1DKKe1uke6mzn688QSrAhzxzjRlXFKWr8KYmMtBzPhhHswaAnrIEALw_wcB&gclsrc=aw.ds" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> In addition to discounts on every visit, members of the military and Veterans and their families will receive 15% off their visit at any Red Roof Inn, Red Roof PLUS+, HomeTowne Studios by Red Roof, or The Red Collection property when they book and stay from October 11 to November 14.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Soapy Joe's Car Wash
+        <a href="https://www.military.com/discounts/soapy-joes-car-wash-veterans-day-military-discount" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans, active duty military and spouses get a free car wash on November 11.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Super 8 by Wyndham
+        <a href="https://www.super8.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> 15% off Best Available Rate at participating locations.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Renewal by Anersen Windows
+        <a href="https://secure.money.com/pr/q17b952ddd1c?s1=vetsday_retailarticle&ap-referrer=www.military.com" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Military discount of $375 off per window and $775 off per door, plus an extra $300 off total purchase. </p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        TOPS
+        <a href="https://www.topsmarkets.com/Veterans/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> On November 11, TOPS will honor an 11% discount off a total order to all Veterans and active duty military personnel at any store location.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        Waters CarWash
+        <a href="https://www.waterscarwash.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Waters Carwash is offering free car washes to all Veterans and active duty military personnel November 9 to 11.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        White Water Express
+        <a href="https://www.whitewatercw.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> Veterans with a valid ID receive a free Ceramic car wash on November 11.</p>
+</div>
+    
+<div class="deal" data-location="nationwide" data-lat="1000" data-lng="1000">
+    <h3>
+        ZIPS Car Wash
+        <a href="https://www.zipscarwash.com/" class="store-link" target="_blank">
+            Visit Website
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+        </a>
+    </h3>
+    <p><span class="location-tag">Nationwide</span> ZIPS Car Wash is offering free premium car washes to all Veterans and active duty service members.</p>
+</div>
+            </div>
+        </div>
+
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Note: All deals are subject to change and may require proof of military service. Please check with individual businesses for details and restrictions. Deals are valid for Veterans Day 2024 unless otherwise specified.</p>
+    </footer>
+
+    <script>
+        let map;
+        let markers = [];
+
+        // Initialize map
+        function initMap() {
+            map = L.map('map').setView([39.8283, -98.5795], 4);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+            updateMapMarkers();
+        }
+
+        // Initialize map on page load
+        document.addEventListener('DOMContentLoaded', initMap);
+
+        function toggleView(view) {
+            const listButton = document.querySelector('.view-button:nth-child(1)');
+            const mapButton = document.querySelector('.view-button:nth-child(2)');
+            const mapContainer = document.querySelector('.map-container');
+            const dealsList = document.getElementById('deals-list');
+
+            if (view === 'map') {
+                mapContainer.classList.add('visible');
+                dealsList.style.display = 'none';
+                mapButton.classList.add('active');
+                listButton.classList.remove('active');
+                map.invalidateSize();
+            } else {
+                mapContainer.classList.remove('visible');
+                dealsList.style.display = 'block';
+                listButton.classList.add('active');
+                mapButton.classList.remove('active');
+            }
+        }
+
+        function updateMapMarkers() {
+            // Clear existing markers
+            markers.forEach(marker => map.removeLayer(marker));
+            markers = [];
+
+            // Add markers for visible deals
+            const visibleDeals = document.querySelectorAll('.deal:not(.hidden)');
+            visibleDeals.forEach(deal => {
+                const lat = parseFloat(deal.dataset.lat);
+                const lng = parseFloat(deal.dataset.lng);
+                const title = deal.querySelector('h3').textContent;
+                const description = deal.querySelector('p').textContent;
+
+                const marker = L.marker([lat, lng])
+                    .bindPopup(`<strong>${title}</strong><br>${description}`)
+                    .addTo(map);
+                markers.push(marker);
+            });
+        }
+
+        function applyFilters() {
+            const categoryFilter = document.getElementById('category-filter').value;
+            const locationFilter = document.getElementById('location-filter').value;
+            const searchFilter = document.getElementById('search-filter').value.toLowerCase();
+            const deals = document.getElementsByClassName('deal');
+            const categories = document.getElementsByClassName('category');
+
+            // Reset visibility of all categories
+            for (let category of categories) {
+                category.classList.remove('hidden');
+            }
+
+            // Filter deals based on all criteria
+            for (let deal of deals) {
+                const dealCategory = deal.parentElement.id;
+                const dealLocation = deal.dataset.location;
+                const dealText = deal.innerText.toLowerCase();
+                
+                const categoryMatch = categoryFilter === 'all' || dealCategory === categoryFilter;
+                const locationMatch = locationFilter === 'all' || dealLocation === locationFilter;
+                const searchMatch = dealText.includes(searchFilter);
+
+                if (categoryMatch && locationMatch && searchMatch) {
+                    deal.classList.remove('hidden');
+                } else {
+                    deal.classList.add('hidden');
+                }
+            }
+
+            // Hide empty categories
+            for (let category of categories) {
+                const visibleDeals = category.querySelectorAll('.deal:not(.hidden)');
+                if (visibleDeals.length === 0) {
+                    category.classList.add('hidden');
+                }
+            }
+
+            // Update map markers
+            updateMapMarkers();
+        }
+    </script>
+</body>
+</html>
